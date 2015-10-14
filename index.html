@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="scenarioApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="app/vendor/angular/angular.js"></script>
+    <script src="app/vendor/angular-route/angular-route.js"></script>
+    <script src="app/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="app/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="app/vendor/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="app/vendor/bootstrap/dist/css/bootstrap-theme.min.css"/>
+</head>
+<body>
+
+
+<div class="container">
+    <main-menu></main-menu>
+
+    <ng-view></ng-view>
+
+    <hr/>
+
+    copyright 2015
+</div>
+
+<script src="app/app.js"></script>
+<script src="app/controllers/index-controller.js"></script>
+<script src="app/controllers/scenario-controller.js"></script>
+<script src="app/services/scenario-service.js"></script>
+<script src="app/repository/scenario-repository.js"></script>
+<script src="app/directives/main-menu.js"></script>
+</body>
+</html>

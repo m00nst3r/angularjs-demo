@@ -1,0 +1,21 @@
+<div class="col-sm-12" ng-controller="scenarioController as vm">
+    <h1>scenario</h1>
+    <table class="table table-responsive table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Factors</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in vm.Items">
+            <th>{{ item.id }}</th>
+            <th>
+                <span class="label label-default" ng-repeat="factor in item.factors">
+                    {{ factor.name }}
+                </span>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+</div>
