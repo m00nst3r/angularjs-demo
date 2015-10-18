@@ -1,53 +1,22 @@
 (function(){
 
-    angular.module('scenarioApp').controller('scenarioController', ['$scope', 'scenarioService', scenarioController]);
+    angular.module('scenarioApp').controller('scenarioController', ['$scope', '$routeParams', 'scenarioService', scenarioController]);
 
-    function scenarioController($scope, scenarioService){
+    function scenarioController($scope, $routeParams, scenarioService){
         var vm = this;
-        vm.hello = "Hello, I am Scenario Controller";
-        vm.Scenarios = function() { return scenarioService.GetScenarios(); };
-        vm.GetScenario = getScenario;
-        vm.LoadScenarios = loadScenario;
-        vm.Items = [
-            {
-                id: 1,
-                factors: [
-                    {
-                        name: 'name',
-                        description: 'description'
-                    },
-                    {
-                        name: 'cool name',
-                        description: 'awesome description'
-                    }
-                ]
-            },
-            {
-                id: 2,
-                factors: [
-                    {
-                        name: 'name2',
-                        description: 'description2'
-                    }
-                ]
-            }
-        ];
+        vm.Scenario = function() { return scenarioService.GetScenario(); };
         init();
 
         function init(){
-            loadScenario();
+            if (vm.Scenario() == null){
+                loadScenario();
+            }
         }
 
         function loadScenario(){
-            scenarioService.LoadScenarios()
-                .then(function(){})
-                .catch(function (errors) {
-                    console.log(errors);
-                })
-        }
-
-        function getScenario(){
-            console.log('Load Scenario');
+            scenarioService.LoadScenario($routeParams.id)
+                .then(function(data){})
+                .catch();
         }
     }
 

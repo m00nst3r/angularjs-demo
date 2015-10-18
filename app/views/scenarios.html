@@ -1,0 +1,27 @@
+<div class="col-sm-12">
+    <h4>Scenarios</h4>
+
+    <div class="panel panel-default" ng-repeat="scenario in vm.Scenarios().RiskScenarios">
+        <div class="panel-heading">
+            <div class="row">
+                <span>{{ scenario.name }}</span>
+                <button class="btn btn-danger pull-right">delete</button>
+                <button class="btn btn-default pull-right" ng-click="vm.OpenScenario(scenario)">edit</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Shock</th>
+                    <th>Scope</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="item in scenario.factors" scope-table scopes="item"></tbody>
+            </table>
+        </div>
+    </div>
+</div>

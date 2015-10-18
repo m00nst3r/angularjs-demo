@@ -3,10 +3,24 @@
 
     function scenarioRepository($http, $q, baseUrl){
 
-        function loadScenarios(){
+        function _loadScenarios(){
             var deferred = $q.defer();
 
-            $http.get(baseUrl + 'bears/')
+            $http.get(baseUrl + 'scenarios/')
+                .success(function(response){
+                    deferred.resolve(response);
+                })
+                .error(function(error){
+                    deferred.reject(error);
+                });
+
+            return deferred.promise;
+        }
+
+        function _loadScenario(id){
+            var deferred = $q.defer();
+
+            $http.get(baseUrl + 'scenario/' + id)
                 .success(function(response){
                     deferred.resolve(response);
                 })
@@ -18,7 +32,8 @@
         }
 
         return{
-            LoadScenarios: loadScenarios
+            LoadScenarios: _loadScenarios,
+            LoadScenario: _loadScenario
         }
     }
 })();

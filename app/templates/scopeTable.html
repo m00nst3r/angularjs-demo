@@ -1,0 +1,22 @@
+<tbody>
+<tr>
+    <td rowspan="{{ scopeCollection.length }}">
+        {{ scopes.riskName }}
+        <button ng-if="canedit" class="btn btn-xs btn-danger pull-right" ng-click="EditItem(scopes)"><i class="fa fa-trash"></i></button>
+    </td>
+    <td rowspan="{{ scopeCollection.length }}">{{ scopes.level }}</td>
+    <td>
+        <button ng-if="canedit" class="btn btn-xs" ng-click="EditItem(scopes)"><i class="fa fa-pencil"></i></button>
+        {{ scopeCollection[0].name || 'Global scope' }}
+    </td>
+    <td>
+        <label class="label label-default" ng-repeat="level in scopeCollection[0].value">{{ level }}</label>
+    </td>
+</tr>
+<tr ng-if="scopeCollection.length > 1"
+    ng-repeat="additionScope in scopeCollection"
+    ng-show="!$first"
+    level="additionScope"
+    more-row>
+</tr>
+</tbody>
